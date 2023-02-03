@@ -1,0 +1,37 @@
+const Command = require('../command.js');
+const Message = require('../message.js');
+const Rover = require('../rover.js');
+
+let MOVE = { 	
+value: this.position,
+results: "completed: true"
+}
+// Number representing the position the rover should move to. 	
+// Updates to rover object: position 	
+// results returned: {completed: true}
+
+let STATUS_CHECK 	 = {
+value: undefined,
+results: {completed: true, roverStatus: {mode: this.mode, generatorWatts: this.generatorWatts, position: this.position}}
+}
+// Updates to rover object: No updates 	
+// results returned:  Values for mode, generatorWatts, position will depend on current state of rover.
+
+let MODE_CHANGE = {
+value: `${this.mode}`,
+results: {complted: true}
+}
+// value: String representing rover mode (see modes) 	
+// Updates to rover object: mode 	
+// results returned: {completed: true}
+
+// The response value for completed will be false if the command could NOT be completed.
+
+
+// Rover Modes
+
+// Mode: LOW_POWER 	
+// Restrictions: Can't be moved in this state.
+
+// Mode: NORMAL 	
+// Restrictions: None

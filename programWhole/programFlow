@@ -1,0 +1,120 @@
+
+
+class Command {
+   constructor(commandType, value) {
+     this.commandType = commandType;
+     if (!commandType) {
+       throw Error("Command type required.");
+     }
+     this.value = value;
+   }
+ }
+
+class Message {
+   constructor(name, commands) {
+     this.name = name;
+     if(!name) {
+       throw Error("Name is required.");
+     }
+     this.commands = commands;
+   }
+}
+
+class Rover {
+  constructor(position) {
+    this.position = position;
+    this.mode = 'NORMAL';
+    this.generatorWatts = 110;
+   };
+
+  instructons = ['MOVE', 'STATUS_CHECK', 'MODE_CHANGE']
+  
+  modes = ['NOMRAL', 'LOW_POWER']
+  
+  rover = {
+      message: message.name,
+      results: message.commands
+    };
+  
+  receiveMessage(message) {
+    let roverInst = instructions;
+
+    let roverStatus = { 
+      completed: [rover]
+    }
+
+    for (let i = 0; i < message[commands]; i++) {
+      if (message[commands].name === roverInst[i]) {
+        this.mode = message[commands].name;
+      }
+      return this.mode;
+    }
+
+  // access commands first(first in list) : access constuctor of class, verify true
+  // access message next, verify that class is in constructor, and reference constructor
+  // how many nested loops will it take to verify instructions and select returns?
+    let results = {
+      message: message.name,
+      results: ['completed:', message.commands]
+  }
+    
+    return results;
+  }
+  
+  /*
+  For the STATUS_CHECK command, receiveMessage(message).results includes a roverStatus object describing the current state of the rover object --- mode, generatorWatts, and position. The test should check each of these for accuracy
+  */
+  
+  
+}
+
+rover status object return:
+{completed: true, roverStatus: {mode: 'NORMAL', generatorWatts: 110, position: 87382098}} Values for mode, generatorWatts, position will depend on current state of rover.
+
+//example inputs:
+let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
+let message = new Message('Test message with two commands', commands);
+let rover = new Rover(98382);    // Passes 98382 as the rover's position.
+let response = rover.receiveMessage(message);
+
+console.log(response);
+
+/*
+example log:
+{
+   message: 'Test message with two commands',
+   results: [
+      {
+         completed: true
+      },
+      {
+         completed: true,
+         roverStatus: { mode: 'LOW_POWER', generatorWatts: 110, position: 98382 }
+      }
+   ]
+}
+
+class Rover {
+  constructor(position) {
+    this.position = position;
+    this.mode = 'NORMAL';
+    this.generatorWatts = generatorWatts;
+   };
+  
+  receiveMessage(message) {
+    message contains command type and values
+    the command type changes the stauts of the rover
+    the value returns either low power or normal
+
+    receiveMessage(message) {
+    this sets up the changes to the properties above, and returns a readout, which so far looks okay.
+
+    looks like the sample output is returning an object:
+    object {
+    message: this.message
+    results: this.results(an array),
+    }
+    }
+  }
+}
+*/
